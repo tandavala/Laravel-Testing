@@ -35,8 +35,5 @@ class ViewBlogPostTest extends TestCase
       // assert that we see pubished data
       $resp->assertSee($post->created_at->toFormattedDateString());
   }
-  public function testViewsA404PageWhenPostIsNotFound()
-  {
-    
-  }
+  
 }
