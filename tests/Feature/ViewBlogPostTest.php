@@ -2,14 +2,19 @@
 
 namespace Tests\Feature;
 
+use App\Post;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class ViewBlogPostTest extends TestCase
 {
+  use DatabaseMigrations;
+
   public function testCanViewABlogPost()
   {
+
       // Arrangement
       // creating a blog post
       $post = Post::create([
