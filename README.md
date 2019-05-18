@@ -8,12 +8,31 @@ In this project I demonstrated how to write tests with laravel.
 
 I developed this mini project for the purpose of practicing TDD with laravel. The application is a blog to publish and read articles.
 
-### The core of Teste
+### The Core 
 
 
 I organized the tests in three main steps as they are named below.
 
-* Arrange
+* Arrangement
+* Action
+* Assert
+
+- In *Arrangment* We create posts, first we need to create a test ``` php artisan make:test ViewPostTest ```  we write the code below in the file that the artisan generated.
+
+```javascript
+ use DatabaseMigrations;
+
+  public function testCanViewABlogPost()
+  {
+
+      // Arrangement
+      // creating a blog post
+      $post = Post::create([
+          'title' => 'Simple title',
+          'body' => 'Simple body'
+      ]);
+  }
+```
 
 ```
 Give examples
