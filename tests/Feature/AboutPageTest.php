@@ -13,6 +13,7 @@ class AboutPageTest extends TestCase
        $resp = $this->get('/about');
 
        $resp->assertStatus(200);
+       
        $resp->assertSee("About me");
    }
 }
