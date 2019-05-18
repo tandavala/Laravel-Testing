@@ -17,9 +17,9 @@ I organized the tests in three main steps as they are named below.
 * Action
 * Assert
 
-- In *Arrangment* We create posts, first we need to create a test ``` php artisan make:test ViewPostTest ```  we write the code below in the file that the artisan generated.
+- In **Arrangment** We create posts, first we need to create a test ``` php artisan make:test ViewPostTest ```  we write the code below in the file that the artisan generated.
 
-```javascript
+```ruby
  use DatabaseMigrations;
 
   public function testCanViewABlogPost()
@@ -34,79 +34,102 @@ I organized the tests in three main steps as they are named below.
   }
 ```
 
+after creating a post, we need to view the created post, as we already know in laravel we have no view without routers, so let's go to part two of our test **action**
+
+```ruby
+      use DatabaseMigrations;
+
+  public function testCanViewABlogPost()
+  {
+
+      // Arrangement
+      // creating a blog post
+      $post = Post::create([
+          'title' => 'Simple title',
+          'body' => 'Simple body'
+      ]);
+      // Action
+      //visiting a route
+      $resp = $this->get("/post/{$post->id}");
+  }
 ```
-Give examples
+
+So far so good, what's missing now is to make some asserts.
+
+```ruby
+    use DatabaseMigrations;
+
+  public function testCanViewABlogPost()
+  {
+
+      // Arrangement
+      // creating a blog post
+      $post = Post::create([
+          'title' => 'Simple title',
+          'body' => 'Simple body'
+      ]);
+      // Action
+      //visiting a route
+      $resp = $this->get("/post/{$post->id}");
+
+      // Assert
+      // assert status 200
+      $resp->assertStatus(200);
+      // assert that we see post title
+      $resp->assertSee($post->title);
+      // assert that we see post body
+      $resp->assertSee($post->body);
+      // assert that we see pubished data
+      $resp->assertSee($post->created_at->toFormattedDateString());
+  }
 ```
+
+Now you can run the testes....
+
+```ruby
+vendor/bin/phpunit
+```
+
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Clone the project
 
 ```
-Give the example
+https://github.com/tandavala/Laravel-Testing.git
 ```
 
-And repeat
+update 
 
 ```
-until finished
+composer update
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+copy the .env.exemple to .env
 
 ```
-Give an example
+cp .env.exemple .env
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+Generate the key
 
 ```
-Give an example
+php artisan key:gen
 ```
 
-## Deployment
+## Running 
 
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+```
+php artisan serve
+```
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Jose Tandavala**  - [Facebook](https://facebook.com/jose.tandavala)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
