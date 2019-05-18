@@ -1,14 +1,19 @@
 # How To Test Laravel Code
 
-Software testing is really required to point out the defects and errors that were made during the development phases, and Laravel is not defferente. in this repo a demostrate our to teste laravel code.
+Software testing is really required to point out the defects and errors that were made during the development phases, and Laravel is not defferente. 
+In this project I demonstrated how to write tests with laravel.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+I developed this mini project for the purpose of practicing TDD with laravel. The application is a blog to publish and read articles.
 
-What things you need to install the software and how to install them
+### The core of Teste
+
+
+I organized the tests in three main steps as they are named below.
+
+* Arrange
 
 ```
 Give examples
