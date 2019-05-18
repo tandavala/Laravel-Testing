@@ -1,6 +1,6 @@
-# Project Title
+# How To Test Laravel Code
 
-One Paragraph of project description goes here
+Software testing is really required to point out the defects and errors that were made during the development phases, and Laravel is not defferente. in this repo a demostrate our to teste laravel code.
 
 ## Getting Started
 
