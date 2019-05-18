@@ -21,7 +21,4 @@ Route::get('/about', function(){
     return view('about');
 });
 
-Route::get('/post/{id}/', function($id){
-    $post = Post::find($id);
-    return view('post', compact('post'));
-});
+Route::get('/post/{id}/', 'PostsController@view')->name('index');

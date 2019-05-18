@@ -33,6 +33,6 @@ class ViewBlogPostTest extends TestCase
       // assert that we see post body
       $resp->assertSee($post->body);
       // assert that we see pubished data
-      $resp->assertSee($post->created_at);
+      $resp->assertSee($post->created_at->toFormattedDateString());
   }
 }
