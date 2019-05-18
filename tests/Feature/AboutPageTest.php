@@ -8,15 +8,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AboutPageTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $response = $this->get('/');
+   public function testCanViewAboutPage()
+   {
+       $resp = $this->get('/about');
 
-        $response->assertStatus(200);
-    }
+       $resp->assertStatus(200);
+       $resp->assertSee("About me");
+   }
 }
